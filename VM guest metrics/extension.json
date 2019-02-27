@@ -2,18 +2,19 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vmNames": {
+        "windowsVmNames": {
             "type": "array",
             "metadata": {
-                "description": "Array of VM names"
+                "description": "Array of Windows VM names"
                 }
             },
-        "vmIds": {
-            "type": "array",
-            "metadata": {
-                "description": "Array of VM IDs"
-                }
-        }
+		"location": {
+		  "type": "string",
+		  "defaultValue": "[resourceGroup().location]",
+		  "metadata": {
+			"description": "Virtual machine location"
+		  }
+		}
     },
     "variables": {
         "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'diag')]"
@@ -21,9 +22,9 @@
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('vmNames')[copyIndex()], '/IdentityExt')]",
+            "name": "[concat(parameters('windowsVmNames')[copyIndex()], '/IdentityExt')]",
             "apiVersion": "2015-05-01-preview",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "properties": {
                 "publisher": "Microsoft.ManagedIdentity",
                 "type": "ManagedIdentityExtensionForWindows",
@@ -35,7 +36,7 @@
             },
             "copy": {
                 "name": "IdentityExtensions",
-                "count": "[length(parameters('vmIds'))]"
+                "count": "[length(parameters('windowsVmNames'))]"
                 }
         },
         {
@@ -50,14 +51,26 @@
             "properties": {},
             "copy": {
                 "name": "StorageAccounts",
-                "count": "[length(parameters('vmIds'))]"
+                "count": "[length(parameters('windowsVmNames'))]"
                 }
         },
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat( parameters('vmNames')[copyIndex()],'/WadExt')]",
+		{
+		  "type": "Microsoft.Compute/virtualMachines",
+		  "name": "[parameters('windowsVmNames')[copyIndex()]]",
+		  "location": "[parameters('location')]",
+		  "identity": {
+			"type": "SystemAssigned"
+		  },
+		  "apiVersion": "2018-10-01",
+		  "resources": [
+			{
+            "type": "extensions",
+            "name": "Microsoft.Insights.VMDiagnosticsSettings",
             "apiVersion": "2017-12-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
+			"dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('windowsVmNames')[copyIndex()])]"
+            ],
             "properties": {
                 "publisher": "Microsoft.Azure.Diagnostics",
                 "type": "IaaSDiagnostics",
@@ -69,7 +82,7 @@
                         "DiagnosticMonitorConfiguration": {
                             "overallQuotaInMB": 5120,
                             "Metrics": {
-                                "resourceId": "[parameters('vmIds')[copyIndex()]]",
+                                "resourceId": "[resourceId('Microsoft.Compute/virtualMachines',parameters('windowsVmNames')[copyIndex()])]",
                                 "MetricAggregation": [
                                     {
                                         "scheduledTransferPeriod": "PT1H"
@@ -348,12 +361,14 @@
                     "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', concat(variables('storageAccountName'), copyIndex()) ),'2015-06-15').key1]",
                     "storageAccountEndPoint": "https://core.windows.net/"
                 }
-            },
-            "copy": {
-                "name": "WadExtensions",
-                "count": "[length(parameters('vmIds'))]"
-                }
-        }   
+            }
+        }
+		  ],
+			"copy": {
+				"name": "VirtualMachines",
+				"count": "[length(parameters('windowsVmNames'))]"
+				}
+		} 
     ],
     "outputs": {}
 }
