@@ -5,8 +5,11 @@ In Microsoft Azure cloud you can create Virtual Machines. Linux-based or Windows
 Now all the non-host metrics can be emitted to Azure Monitor and if you want to collect metrics for VMs by AzureMP, you'll have to do switch to this approach.
 
 To do so, first read the guides:
+
   What are guest metrics: [link](https://docs.microsoft.com/en-us/azure/cost-management/azure-vm-extended-metrics)
+  
   How to enable guest metrics on Windows machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)
+  
   How to enable guest metrics on Linux machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
  
 ## What this repository provides
