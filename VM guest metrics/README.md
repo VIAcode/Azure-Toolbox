@@ -2,7 +2,7 @@
 ## Intro
 In Microsoft Azure cloud you can create Virtual Machines. Linux-based or Windows-based. For these machines you can emit some performance counters to Azure and from Azure to SCOM using AzureMP. Recently there was a change in API and a switch in approach.
 
-Now all the non-host metrics can be emitted to Azure Monitor and if you want to collect guest metrics for VMs by AzureMP, you'll have to do switch to this approach.
+Now all the non-host metrics can be emitted to Azure Monitor and if you want to collect guest metrics for VMs by AzureMP, you'll have to configure diagnostics extensions, installed on your VMs.
 
 To do so, first read the guides:
 
