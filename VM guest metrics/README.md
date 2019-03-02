@@ -1,7 +1,8 @@
 # Guest metrics for Windows VMs 
 
 ## Intro
-This solution deploys Guest metrics extensions to Azure **Windows Virtual Machines** that are monitored by SCOM [**Azure Management Pack**](https://www.microsoft.com/en-us/download/details.aspx?id=50013) version starting 1.7.0.0. 
+This solution deploys Guest metrics extensions on Azure **Windows Virtual Machines** that are monitored by SCOM [**Azure Management Pack**](https://www.microsoft.com/en-us/download/details.aspx?id=50013) 1.7.0.0.
+
 Guest Metrics created for Virtual Machines by this extension will be emitted to Azure Monitor that is used by Azure Management Pack for delivering performance metrcis to SCOM. 
 
 More information about Guest extenstions can be found in links below:
