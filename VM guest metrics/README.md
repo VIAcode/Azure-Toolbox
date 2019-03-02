@@ -1,20 +1,14 @@
-# Guest metrics
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com/VIAcode/Azure-Toolbox/blob/master/VM%20guest%20metrics/azuredeploy.json" target="_blank">
-DEPLOY TO AZURE
-</a>
+# Guest metrics extension for Windows Vitrual Machines 
 
 ## Intro
-In Microsoft Azure cloud you can create Virtual Machines. Linux-based or Windows-based. For these machines you can emit some performance counters to Azure and from Azure to SCOM using AzureMP. Recently there was a change in API and a switch in approach.
+This solution deploys Guest metrics extensions to Azure **Windows Virtual Machines** that are monitored by SCOM **Azure Management Pack** version starting 1.7.0.0. 
+Guest Metrics created for Virtual Machines by this extension will be emitted to Azure Monitor that is used by Azure Management Pack for delivering performance metrcis to SCOM. 
 
-Now all the non-host metrics can be emitted to Azure Monitor and if you want to collect guest metrics for VMs by AzureMP, you'll have to configure diagnostics extensions, installed on your VMs.
+More information about Guest extenstions can be found in links below:
 
-To do so, first read the guides:
-
-  What are guest metrics: [link](https://docs.microsoft.com/en-us/azure/cost-management/azure-vm-extended-metrics)
-  
-  How to enable guest metrics on Windows machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)
-  
-  How to enable guest metrics on Linux machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
+  + What are guest metrics: [link](https://docs.microsoft.com/en-us/azure/cost-management/azure-vm-extended-metrics)
+  + How enable guest metrics on Windows machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)
+  + How enable guest metrics on Linux machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
  
 ## What this repository provides
 A way to ease your switch to Azure Monitor for Windows-based machines
