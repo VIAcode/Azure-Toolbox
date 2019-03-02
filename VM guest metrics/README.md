@@ -1,4 +1,8 @@
 # Guest metrics
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhttps://github.com/VIAcode/Azure-Toolbox/blob/master/VM%20guest%20metrics/extension.json" target="_blank">
+DEPLOY TO AZURE
+</a>
+
 ## Intro
 In Microsoft Azure cloud you can create Virtual Machines. Linux-based or Windows-based. For these machines you can emit some performance counters to Azure and from Azure to SCOM using AzureMP. Recently there was a change in API and a switch in approach.
 
