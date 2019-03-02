@@ -1,5 +1,5 @@
 # Guest metrics
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com/VIAcode/Azure-Toolbox/blob/master/VM%20guest%20metrics/extension.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com/VIAcode/Azure-Toolbox/blob/master/VM%20guest%20metrics/azuredeploy.json" target="_blank">
 DEPLOY TO AZURE
 </a>
 
