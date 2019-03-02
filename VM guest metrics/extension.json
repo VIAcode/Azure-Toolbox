@@ -5,7 +5,7 @@
         "windowsVmNames": {
             "type": "array",
             "metadata": {
-                "description": "Array of Windows VM names"
+                "description": "Array of Windows VM names.  Example: [\"vm1\",\"vm2\"]"
                 }
             },
 		"location": {
