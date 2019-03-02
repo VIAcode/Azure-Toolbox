@@ -1,4 +1,4 @@
-# Guest metrics extension for Windows Vitrual Machines 
+# Guest metrics extension for Windows VMs 
 
 ## Intro
 This solution deploys Guest metrics extensions to Azure **Windows Virtual Machines** that are monitored by SCOM **Azure Management Pack** version starting 1.7.0.0. 
