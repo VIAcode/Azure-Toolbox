@@ -9,9 +9,6 @@ More information about Guest extenstions can be found in links below:
   + What are guest metrics: [link](https://docs.microsoft.com/en-us/azure/cost-management/azure-vm-extended-metrics)
   + How enable guest metrics on Windows machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)
   + How enable guest metrics on Linux machines to send them to Monitor: [link](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
- 
-## What this repository provides
-A way to ease your switch to Azure Monitor for Windows-based machines
 
 ## What this repository contains
 + extension.json — ARM template that you can upload to Azure. It allows to specify an array of VM's that will be updated
