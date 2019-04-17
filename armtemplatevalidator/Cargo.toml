@@ -1,0 +1,9 @@
+[package]
+name = "armtemplatevalidator"
+version = "0.1.0"
+authors = ["gamak"]
+edition = "2018"
+
+[dependencies]
+clap = "2.32.0"
+templatevalidator = { path = "templatevalidator" }
